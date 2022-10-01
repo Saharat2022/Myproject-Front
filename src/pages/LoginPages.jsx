@@ -1,11 +1,23 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginPages() {
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //checkemail+password
+
+    //success : rederect to firstpage
+    navigate("/");
+  };
   return (
     <div>
       <div className="w-3/6 mx-auto  mb-80">
-        <form className="flex flex-col gap-4 w-2/4 mx-auto my-10">
+        <form
+          className="flex flex-col gap-4 w-2/4 mx-auto my-10"
+          onSubmit={handleSubmit}
+        >
           <span className="text-xl font-bold mx-auto">Login</span>
           <div>
             <div className="mb-2 block ">

@@ -13,6 +13,7 @@ function Rounter() {
         <Route path="" element={<FirstPage />} />
         <Route path="/login" element={<LoginPages />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="*" element={<h1>404! This page is not found!!</h1>} />
       </Route>
     </Routes>
   );
