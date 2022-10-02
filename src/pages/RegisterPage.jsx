@@ -8,6 +8,7 @@ function RegisterPage() {
         <form className="flex flex-col gap-4 w-2/4 mx-auto my-10">
           <span className="text-xl font-bold mx-auto">Register</span>
           <div>
+            {/* //profileImage */}
             <div className="mb-2 block ">
               <Label htmlFor="username" value="Username" />
             </div>
@@ -43,10 +44,10 @@ function RegisterPage() {
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="firstname" value="Firstname" />
+              <Label htmlFor="firstName" value="Firstname" />
             </div>
             <TextInput
-              id="firstname"
+              id="firstName"
               type="text"
               placeholder="Your Firstname"
               required={true}
@@ -54,10 +55,10 @@ function RegisterPage() {
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="lastname" value="Lastname" />
+              <Label htmlFor="lastName" value="Lastname" />
             </div>
             <TextInput
-              id="lastname"
+              id="lastName"
               type="text"
               placeholder="Your Lastname"
               required={true}
