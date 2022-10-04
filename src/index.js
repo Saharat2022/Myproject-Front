@@ -1,14 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import AuthContextProvider from "./contexts/AuthContext";
+import LoadingContextProvider from "./contexts/LoadingContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
-    <App />
+    <LoadingContextProvider>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </LoadingContextProvider>
   </BrowserRouter>
   // {/* </React.StrictMode> */}
 );

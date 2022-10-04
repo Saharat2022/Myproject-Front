@@ -1,7 +1,9 @@
+import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React from "react";
+
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ user }) {
   return (
     <div className=" sticky top-0 left-0 bg-white z-50">
       <div className="border-b-4 ">
@@ -10,9 +12,9 @@ function Header() {
             <img src="logo.png" alt="logo" />
           </div>
           <div className="w-3/4">
-            <div className="mx-4 py-3.5 flex align-middle  mt-2.5 gap-5">
+            <div className="mx-8 py-3.5 flex align-middle  mt-2.5 gap-5  ">
               {/* search */}
-              <div className="max-w-2xl mb-0 flex">
+              <div className="max-w-2xl mb-0 flex mx-11">
                 <form className="flex items-center">
                   <div className="relative w-full">
                     <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -49,29 +51,68 @@ function Header() {
                   </button>
                 </form>
               </div>
-              <div className="  px-4 my-auto text-sm ">
-                <span className=" mr-8 hover:text-orange-400">
-                  <a href="/#">วิธีสมัครเรียน</a>
-                </span>
-                <span className="border-red-600 border-2 rounded-md px-4 py-1.5 shadow-md shadow-[#da4f4f] ">
-                  <Link
-                    to="/login"
-                    className=" hover:text-red-600 hover:font-bold"
-                  >
-                    Login
-                  </Link>
-                  &nbsp;||&nbsp;
-                  <Link
-                    to="/register"
-                    className=" hover:text-blue-600 hover:font-bold"
-                  >
-                    Register
-                  </Link>
-                </span>
+              <div className=" px-4 my-auto text-sm ">
+                {user ? (
+                  <div className="flex items-center">
+                    <span className=" mr-8 hover:text-orange-400">
+                      <a href="/#">วิธีสมัครเรียน</a>
+                    </span>
+                    <Navbar fluid={true} rounded={true}>
+                      <div className="flex md:order-2">
+                        <Dropdown
+                          arrowIcon={false}
+                          inline={true}
+                          label={
+                            <Avatar
+                              alt="User settings"
+                              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                              rounded={true}
+                            />
+                          }
+                        >
+                          <Dropdown.Header>
+                            <span className="block text-sm">Bonnie Green</span>
+                            <span className="block truncate text-sm font-medium">
+                              name@flowbite.com
+                            </span>
+                          </Dropdown.Header>
+                          <Dropdown.Item>Dashboard</Dropdown.Item>
+                          <Dropdown.Item>Settings</Dropdown.Item>
+                          <Dropdown.Item>Earnings</Dropdown.Item>
+                          <Dropdown.Divider />
+                          <Dropdown.Item>Sign out</Dropdown.Item>
+                        </Dropdown>
+                        <Navbar.Toggle />
+                      </div>
+                    </Navbar>
+                  </div>
+                ) : (
+                  <>
+                    <span className=" mr-8 hover:text-orange-400">
+                      <a href="/#">วิธีสมัครเรียน</a>
+                    </span>
+
+                    <span className="border-red-600 border-2 rounded-md px-4 py-1.5 shadow-md shadow-[#da4f4f] ">
+                      <Link
+                        to="/login"
+                        className=" hover:text-red-600 hover:font-bold"
+                      >
+                        Login
+                      </Link>
+                      &nbsp;||&nbsp;
+                      <Link
+                        to="/register"
+                        className=" hover:text-blue-600 hover:font-bold"
+                      >
+                        Register
+                      </Link>
+                    </span>
+                  </>
+                )}
               </div>
             </div>
 
-            <ul className="flex gap-6 mx-4 font-sans pr-10 pb-2 pt-1.5 text-sm">
+            <ul className="flex gap-6 mx-20  font-sans pr-10 pb-2 pt-1.5 text-sm">
               {/* <li className=" hover:border-2  active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"> */}
               <li className=" hover:text-orange-400">
                 <a href="/#" target="" rel="noopener noreferrer">
