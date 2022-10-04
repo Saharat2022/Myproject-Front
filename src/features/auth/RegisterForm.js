@@ -40,7 +40,7 @@ function RegisterForm() {
       startLoading();
       await register(input);
       toast.success("success register");
-      navigate("/user");
+      navigate("/");
     } catch (err) {
       // res ถ้าเออเร่อ มันจะส่งเป็น err กลับมา
       toast.error(err.response.data.message);

@@ -11,7 +11,7 @@ function App() {
     <div className="relative">
       {loading && <Spinner />}
       <Rounter />
-      <ToastContainer autoClose="3000" theme="colored" />
+      <ToastContainer autoClose="3000" theme="light" />
     </div>
   );
 }

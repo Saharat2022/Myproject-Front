@@ -5,7 +5,7 @@ function FirstPage() {
   return (
     <div className="">
       {/* <div className="sm:h-64 xl:h-80 2xl:h-96 w-11/12 mx-auto mt-3 border-red-600 border-2 "> */}
-      <div className=" w-11/12 mx-auto mt-3  ">
+      <div className=" w-10/12 mx-auto mt-3  ">
         <div className="h-56 sm:h-64 xl:h-80 2xl:h-96  shadow-2xl">
           <Carousel>
             <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
