@@ -24,6 +24,9 @@ function LoginForm() {
       //success : rederect to firstpage
       setTimeout(() => navigate("/"), 1000);
     } catch (err) {
+      // toast.error("username or password is invalid");
+      // console.log("username or password is invalid");
+
       toast.error(err.response.data.message);
     } finally {
       stopLoading();
@@ -37,7 +40,7 @@ function LoginForm() {
       <span className="text-xl font-bold mx-auto">Login</span>
       <div>
         <div className="mb-2 block ">
-          <Label htmlFor="username" />
+          <Label htmlFor="username" value="Username" />
         </div>
         <TextInput
           id="username"
@@ -72,7 +75,11 @@ function LoginForm() {
         <Button type="submit" size="xs">
           Login
         </Button>
-        <Button type="reset" size="xs">
+        <Button
+          type="reset"
+          size="xs"
+          onClick={() => setInput({ username: "", password: "" })}
+        >
           Reset
         </Button>
       </div>

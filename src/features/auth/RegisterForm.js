@@ -55,8 +55,8 @@ function RegisterForm() {
     >
       <span className="text-xl font-bold mx-auto">Register</span>
       <div>
-        <div className="mb-2 block ">
-          <Label htmlFor="username" />
+        <div className="mb-2 block  ">
+          <Label htmlFor="username" value="Username" />
         </div>
         <TextInput
           type="text"
@@ -71,7 +71,7 @@ function RegisterForm() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="password" />
+          <Label htmlFor="password" value="Password" />
         </div>
         <TextInput
           id="password"
@@ -85,7 +85,7 @@ function RegisterForm() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="confirmpassword" />
+          <Label htmlFor="confirmpassword" value="Confirm Password" />
         </div>
         <TextInput
           id="confirmpassword"
@@ -99,7 +99,7 @@ function RegisterForm() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="firstName" />
+          <Label htmlFor="firstName" value="Firstname" />
         </div>
         <TextInput
           id="firstName"
@@ -113,7 +113,7 @@ function RegisterForm() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="lastName" />
+          <Label htmlFor="lastName" value="Lastname" />
         </div>
         <TextInput
           id="lastName"
@@ -127,7 +127,7 @@ function RegisterForm() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="email" />
+          <Label htmlFor="email" value="Email" />
         </div>
         <TextInput
           id="email"
@@ -141,7 +141,7 @@ function RegisterForm() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="phone" />
+          <Label htmlFor="phone" value="Phone" />
         </div>
         <TextInput
           id="phone"

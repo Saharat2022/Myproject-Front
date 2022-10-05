@@ -1,7 +1,7 @@
 import React from "react";
 
 function PortFolio() {
-  return <div>Port</div>;
+  return <div>Lorem1000</div>;
 }
 
 export default PortFolio;

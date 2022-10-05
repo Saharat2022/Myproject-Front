@@ -5,8 +5,18 @@ import { Link } from "react-router-dom";
 import Avatan from "../../../component/ui/Avatar";
 import { useAuth } from "../../../contexts/AuthContext";
 
-function TabLogin({ user }) {
-  const { logout } = useAuth();
+function TabLogin() {
+  const { logout, user } = useAuth();
+  // const [isOpen, setIsopen] = useState(false);
+  // const dropdownEl = useRef();
+  // useEffect(() => {
+  //   const handleClickOutside = (e) => {
+  //     if (!dropdownEl.current.contains(e.target)) {
+  //       setIsopen(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handleClickOutside);
+  // }, []);
   return (
     <>
       <div className=" px-4 my-auto text-sm ">
@@ -16,21 +26,25 @@ function TabLogin({ user }) {
               <Link to="/stepapply">วิธีสมัครเรียน</Link>
             </span>
             <Navbar fluid={true} rounded={true}>
-              <div className="flex md:order-2 hover:border-2 hover:rounded-lg hover: border-white border-2 hover:border-red-600">
+              <div
+                className="flex md:order-2 hover:border-2 hover:rounded-lg hover: border-white border-2 hover:border-red-600"
+                // ref={dropdownEl}
+              >
                 <Dropdown
                   arrowIcon={false}
                   inline={true}
-                  label={
-                    <Avatan src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn-XCI17XUExBB3oCVfxKV6ZpXHPG-V0bI0A&usqp=CAU" />
-                  }
+                  label={<Avatan src={""} />}
+                  // onClick={() => setIsopen((pre) => !pre)}
                 >
-                  <Dropdown.Header>
-                    <span className="block text-sm">{user.da}</span>
+                  <Dropdown.Header className="border-red-600 border-2">
+                    <span className="block text-sm">{`Hi ${user.firstName}`}</span>
                     <span className="block truncate text-sm font-medium">
-                      name@flowbite.com
+                      {user.email}
                     </span>
                   </Dropdown.Header>
-                  <Dropdown.Item>Dashboard</Dropdown.Item>
+                  <Link to="user/editprofile">
+                    <Dropdown.Item>Editprofile</Dropdown.Item>
+                  </Link>
                   <Dropdown.Item>Settings</Dropdown.Item>
                   <Dropdown.Item>Earnings</Dropdown.Item>
                   <Dropdown.Divider />

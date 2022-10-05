@@ -1,6 +1,7 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import ProfileContainer from "../features/profile/ProfileContainer";
 import AuthLayout from "../layout/auth/AuthLayout";
 import Contact from "../pages/Contact";
 import CoursePage from "../pages/CoursePage";
@@ -16,7 +17,7 @@ function Rounter() {
   const { user } = useAuth();
   return (
     <Routes>
-      <Route path="/" element={<AuthLayout user={user} />}>
+      <Route path="/" element={<AuthLayout />}>
         <Route path="" element={<FirstPage />} />
         <Route path="our" element={<OurPage />} />
         <Route path="course" element={<CoursePage />} />
@@ -25,13 +26,14 @@ function Rounter() {
         <Route path="stepapply" element={<StepApply />} />
         {user ? (
           <>
-            <Route path="*" element={<h1>404! This page is not found!!</h1>} />
+            <Route path="user/editprofile" element={<ProfileContainer />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </>
         ) : (
           <>
             <Route path="login" element={<LoginPages />} />
             <Route path="register" element={<RegisterPage />} />
-            <Route path="*" element={<h1>404! This page is not found!!</h1>} />
+            <Route path="*" element={<Navigate to="/" />} />
           </>
         )}
       </Route>
