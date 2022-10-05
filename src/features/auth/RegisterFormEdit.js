@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/AuthContext";
 import { useLoading } from "../../contexts/LoadingContext";
-import { validateRegister } from "../../validations/userValidate";
+import {
+  validateEdit,
+  validateEdits,
+} from "../../validations/userEditValidate";
 
 function RegisterFormEdit() {
   //context => props = {user, register}
@@ -24,24 +27,48 @@ function RegisterFormEdit() {
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     //validate data
-    const { error } = validateRegister(inputEdit);
-    if (error) {
-      // console.dir(error);
-      // console.log(error.ValidationError);
+    if (!inputEdit.Newpassword.trim()) {
+      const { error } = validateEdit({ password: inputEdit.password });
 
-      // console.log(error.message);
-      return toast.error(error.message);
-    }
-    try {
-      startLoading();
-      await register(inputEdit);
-      toast.success("success register");
-      navigate("/");
-    } catch (err) {
-      // res ถ้าเออเร่อ มันจะส่งเป็น err กลับมา
-      toast.error(err.response.data.message);
-    } finally {
-      stopLoading();
+      if (error) {
+        // console.dir(error);
+        // console.log(error.ValidationError);
+
+        // console.log(error.message);
+        return toast.error(error.message[0]);
+      }
+      // try {
+      //   startLoading();
+      //   await register(inputEdit);
+      //   toast.success("success register");
+      //   navigate("/");
+      // } catch (err) {
+      //   // res ถ้าเออเร่อ มันจะส่งเป็น err กลับมา
+      //   toast.error(err.response.data.message);
+      // } finally {
+      //   stopLoading();
+      // }
+    } else {
+      const { error } = validateEdits(inputEdit);
+
+      if (error) {
+        // console.dir(error);
+        // console.log(error.ValidationError);
+
+        // console.log(error.message);
+        return toast.error(error.message);
+      }
+      // try {
+      //   startLoading();
+      //   await register(inputEdit);
+      //   toast.success("success register");
+      //   navigate("/");
+      // } catch (err) {
+      //   // res ถ้าเออเร่อ มันจะส่งเป็น err กลับมา
+      //   toast.error(err.response.data.message);
+      // } finally {
+      //   stopLoading();
+      // }
     }
   };
   return (

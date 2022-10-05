@@ -1,12 +1,8 @@
 import React, { useRef, useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
 
 import RegisterFormEdit from "../auth/RegisterFormEdit";
 
 function ProfileContainer() {
-  const {
-    user: { profileImage },
-  } = useAuth();
   const [file, setFile] = useState(null);
 
   const inputEl = useRef();
