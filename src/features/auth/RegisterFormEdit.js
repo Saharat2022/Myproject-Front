@@ -9,9 +9,9 @@ import {
   validateEdits,
 } from "../../validations/userEditValidate";
 
-function RegisterFormEdit() {
+function RegisterFormEdit({ file }) {
   //context => props = {user, register}
-  const { register } = useAuth();
+  const { updateUser, user } = useAuth();
   const navigate = useNavigate();
   const { startLoading, stopLoading } = useLoading();
   const [inputEdit, setInputEdit] = useState({
@@ -35,19 +35,25 @@ function RegisterFormEdit() {
         // console.log(error.ValidationError);
 
         // console.log(error.message);
-        return toast.error(error.message[0]);
+        return toast.error(error.message);
       }
-      // try {
-      //   startLoading();
-      //   await register(inputEdit);
-      //   toast.success("success register");
-      //   navigate("/");
-      // } catch (err) {
-      //   // res ถ้าเออเร่อ มันจะส่งเป็น err กลับมา
-      //   toast.error(err.response.data.message);
-      // } finally {
-      //   stopLoading();
-      // }
+
+      try {
+        startLoading();
+        const formData = new FormData();
+        formData.append("profileImage", file);
+        formData.append("password", inputEdit.password);
+        formData.append("firstName", user.firstName);
+        formData.append("id", user.id);
+        await updateUser(formData);
+        toast.success("success upload");
+        navigate("/");
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data.message);
+      } finally {
+        stopLoading();
+      }
     } else {
       const { error } = validateEdits(inputEdit);
 
@@ -58,17 +64,23 @@ function RegisterFormEdit() {
         // console.log(error.message);
         return toast.error(error.message);
       }
-      // try {
-      //   startLoading();
-      //   await register(inputEdit);
-      //   toast.success("success register");
-      //   navigate("/");
-      // } catch (err) {
-      //   // res ถ้าเออเร่อ มันจะส่งเป็น err กลับมา
-      //   toast.error(err.response.data.message);
-      // } finally {
-      //   stopLoading();
-      // }
+      try {
+        startLoading();
+        const formData = new FormData();
+        formData.append("profileImage", file);
+        formData.append("password", inputEdit.password);
+        formData.append("Newpassword", inputEdit.Newpassword);
+        formData.append("firstName", user.firstName);
+        formData.append("id", user.id);
+        await updateUser(formData);
+        toast.success("success upload");
+        navigate("/");
+      } catch (err) {
+        console.log(err);
+        toast.error(err.response?.data.message);
+      } finally {
+        stopLoading();
+      }
     }
   };
   return (

@@ -17,6 +17,7 @@ function TabLogin() {
   //   };
   //   document.addEventListener("mousedown", handleClickOutside);
   // }, []);
+  console.log(user);
   return (
     <>
       <div className=" px-4 my-auto text-sm ">
@@ -33,7 +34,7 @@ function TabLogin() {
                 <Dropdown
                   arrowIcon={false}
                   inline={true}
-                  label={<Avatan src={""} />}
+                  label={<Avatan src={user.profileImage || ""} />}
                   // onClick={() => setIsopen((pre) => !pre)}
                 >
                   <Dropdown.Header className="border-red-600 border-2">

@@ -7,6 +7,7 @@ import {
   getAccessToken,
   removeAccessToken,
 } from "../utils/localStorage";
+import * as userService from "../api/userApi";
 
 const AuthContext = createContext();
 
@@ -68,9 +69,14 @@ function AuthContextProvider({ children }) {
   };
 
   if (initialLoading) return <Spinner />;
+
+  const updateUser = async (input) => {
+    const res = await userService.updateUser(input);
+    setUser(res.data.user);
+  };
   return (
     <AuthContext.Provider
-      value={{ user, register, login, logout, initialLoading }}
+      value={{ user, register, login, logout, initialLoading, updateUser }}
     >
       {children}
     </AuthContext.Provider>

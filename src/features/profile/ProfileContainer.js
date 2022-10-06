@@ -28,14 +28,14 @@ function ProfileContainer() {
           />
 
           {file ? (
-            <>
+            <div className=" w-80 h-80">
               <img
                 className="w-full h-full"
                 src={URL.createObjectURL(file)}
                 alt="profile"
                 sizes="xs"
               />
-            </>
+            </div>
           ) : (
             <>
               <img
@@ -47,7 +47,7 @@ function ProfileContainer() {
           )}
           <span>upload picture</span>
         </div>
-        <RegisterFormEdit />
+        <RegisterFormEdit file={file} />
       </div>
     </div>
   );
