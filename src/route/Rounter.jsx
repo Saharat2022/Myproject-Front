@@ -1,8 +1,12 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+
 import { useAuth } from "../contexts/AuthContext";
 import ProfileContainer from "../features/profile/ProfileContainer";
 import AuthLayout from "../layout/auth/AuthLayout";
+
+import AdminCategory from "../pages/AdminCategory";
+import AdminPortfolio from "../pages/AdminPortfolio";
 import Contact from "../pages/Contact";
 import CoursePage from "../pages/CoursePage";
 
@@ -12,6 +16,7 @@ import OurPage from "../pages/OurPage";
 import PortFolio from "../pages/PortFolio";
 import RegisterPage from "../pages/RegisterPage";
 import StepApply from "../pages/StepApply";
+import CreateCategoryPage from "../pages/CreateCategoryPage";
 
 function Rounter() {
   const { user } = useAuth();
@@ -25,10 +30,23 @@ function Rounter() {
         <Route path="contact" element={<Contact />} />
         <Route path="stepapply" element={<StepApply />} />
         {user ? (
-          <>
-            <Route path="user/editprofile" element={<ProfileContainer />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </>
+          user.role === "user" ? (
+            <>
+              <Route path="user/editprofile" element={<ProfileContainer />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </>
+          ) : (
+            <>
+              <Route path="admin/course" element={<AdminCategory />} />
+              <Route path="admin/portfolio" element={<AdminPortfolio />} />
+              <Route
+                path="admin/createcategory"
+                element={<CreateCategoryPage />}
+              />
+
+              <Route path="*" element={<Navigate to="/" />} />
+            </>
+          )
         ) : (
           <>
             <Route path="login" element={<LoginPages />} />

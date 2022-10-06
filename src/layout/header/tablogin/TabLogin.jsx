@@ -17,44 +17,65 @@ function TabLogin() {
   //   };
   //   document.addEventListener("mousedown", handleClickOutside);
   // }, []);
-  console.log(user);
+  // console.log(user.role === "user");
+
   return (
     <>
       <div className=" px-4 my-auto text-sm ">
         {user ? (
-          <div className="flex items-center ">
-            <span className=" mr-8 hover:text-orange-400 ">
-              <Link to="/stepapply">วิธีสมัครเรียน</Link>
-            </span>
-            <Navbar fluid={true} rounded={true}>
-              <div
-                className="flex md:order-2 hover:border-2 hover:rounded-lg hover: border-white border-2 hover:border-red-600"
-                // ref={dropdownEl}
-              >
-                <Dropdown
-                  arrowIcon={false}
-                  inline={true}
-                  label={<Avatan src={user.profileImage || ""} />}
-                  // onClick={() => setIsopen((pre) => !pre)}
+          user.role === "user" ? (
+            <div className="flex items-center ">
+              <span className=" mr-8 hover:text-orange-400 ">
+                <Link to="/stepapply">วิธีสมัครเรียน</Link>
+              </span>
+              <Navbar fluid={true} rounded={true}>
+                <div
+                  className="flex md:order-2 hover:border-2 hover:rounded-lg hover: border-white border-2 hover:border-red-600"
+                  // ref={dropdownEl}
                 >
-                  <Dropdown.Header className="border-red-600 border-2">
-                    <span className="block text-sm">{`Hi ${user.firstName}`}</span>
-                    <span className="block truncate text-sm font-medium">
-                      {user.email}
-                    </span>
-                  </Dropdown.Header>
-                  <Link to="user/editprofile">
-                    <Dropdown.Item>Editprofile</Dropdown.Item>
-                  </Link>
-                  <Dropdown.Item>Settings</Dropdown.Item>
-                  <Dropdown.Item>Earnings</Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
-                </Dropdown>
-                <Navbar.Toggle />
-              </div>
-            </Navbar>
-          </div>
+                  <Dropdown
+                    arrowIcon={false}
+                    inline={true}
+                    label={
+                      <Avatan
+                        src={
+                          "https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg" &&
+                          user.profileImage
+                        }
+                      />
+                    }
+                    // onClick={() => setIsopen((pre) => !pre)}
+                  >
+                    <Dropdown.Header className="border-red-600 border-2">
+                      <span className="block text-sm">{`Hi ${user.firstName}`}</span>
+                      <span className="block truncate text-sm font-medium">
+                        {user.email}
+                      </span>
+                    </Dropdown.Header>
+                    <Link to="user/editprofile">
+                      <Dropdown.Item>Editprofile</Dropdown.Item>
+                    </Link>
+                    <Dropdown.Item>Settings</Dropdown.Item>
+                    <Dropdown.Item>Earnings</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
+                  </Dropdown>
+                  <Navbar.Toggle />
+                </div>
+              </Navbar>
+            </div>
+          ) : (
+            <>
+              <span className=" mr-8 hover:text-orange-400">
+                <Link to="/stepapply">วิธีสมัครเรียน</Link>
+              </span>
+              <Link to="/">
+                <span className="border-red-600 border-2 rounded-md px-4 py-1.5 shadow-md shadow-[#da4f4f] ">
+                  {`Hi ${user.firstName}`}
+                </span>
+              </Link>
+            </>
+          )
         ) : (
           <>
             <span className=" mr-8 hover:text-orange-400">
