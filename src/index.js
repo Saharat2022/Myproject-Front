@@ -7,18 +7,21 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from "./contexts/AuthContext";
 import LoadingContextProvider from "./contexts/LoadingContext";
+import AdminContextProvider from "./contexts/AdminContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
     <LoadingContextProvider>
-      <AuthContextProvider>
-        <App />
-      </AuthContextProvider>
+      <AdminContextProvider>
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
+      </AdminContextProvider>
     </LoadingContextProvider>
   </BrowserRouter>
-  // {/* </React.StrictMode> */}
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

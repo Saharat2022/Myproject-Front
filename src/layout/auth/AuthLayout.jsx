@@ -10,7 +10,9 @@ function AuthLayout() {
         <Header />
         <Outlet />
       </div>
-      <Footers />
+      <div>
+        <Footers />
+      </div>
     </>
   );
 }

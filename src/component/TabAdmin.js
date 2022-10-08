@@ -6,7 +6,7 @@ function TabAdmin() {
   const { logout } = useAuth();
   return (
     <>
-      <div className="border-gray-600  border-2 rounded-md w-1/5 ml-5 pb-4 shadow-lg h-[250px]">
+      <div className="border-gray-600  border-2 rounded-md w-1/5 ml-5 pb-4 shadow-lg h-[250px] ">
         <div className="border-orange-100 border-2   mb-4 bg-blue-700 p-2 text-center rounded-md text-gray-50 my-0">
           Admin
         </div>

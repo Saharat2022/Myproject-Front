@@ -18,7 +18,7 @@ axios.interceptors.request.use(
   (err) => {
     //throw new Error
     // ดักจบที่ตัวนี้เเล้ว ก็ไม่ต้องใส่ try catch เเล้ว ตอนส่ง getMe
-    Promise.reject(err);
+    return Promise.reject(err);
   }
 );
 

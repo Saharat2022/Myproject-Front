@@ -18,7 +18,7 @@ function TabLogin() {
   //   document.addEventListener("mousedown", handleClickOutside);
   // }, []);
   // console.log(user.role === "user");
-
+  console.log(user);
   return (
     <>
       <div className=" px-4 my-auto text-sm ">
@@ -39,8 +39,7 @@ function TabLogin() {
                     label={
                       <Avatan
                         src={
-                          "https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg" &&
-                          user.profileImage
+                          user.profileImage === "null" ? "" : user.profileImage
                         }
                       />
                     }

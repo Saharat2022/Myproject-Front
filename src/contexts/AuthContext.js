@@ -47,7 +47,7 @@ function AuthContextProvider({ children }) {
     addAccessToken(res.data.token);
     setTimeout(async () => {
       await getMe();
-    }, 1000);
+    }, 200);
     //ใส่ getMe เเล้วลบ setUser(true);ทิ้งได้เลย
     // setUser(true);
   };
@@ -74,6 +74,7 @@ function AuthContextProvider({ children }) {
     const res = await userService.updateUser(input);
     setUser(res.data.user);
   };
+
   return (
     <AuthContext.Provider
       value={{ user, register, login, logout, initialLoading, updateUser }}
