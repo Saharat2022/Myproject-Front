@@ -1,12 +1,10 @@
 import { Button } from "flowbite-react";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { useAdmin } from "../contexts/AdminContext";
+
 import { useAuth } from "../contexts/AuthContext";
+import Mymodal from "./Mymodal";
 
-import Moda from "./Modal";
-
-function CardTitle({ product: { nameProduct, priceProduct, id } }) {
+function CardTitle({ product }) {
   const { user } = useAuth();
   const [open, setOpen] = useState(false);
 
@@ -14,8 +12,10 @@ function CardTitle({ product: { nameProduct, priceProduct, id } }) {
     <>
       <div className=" flex p-2 items-center">
         <div className=" flex  flex-col justify-center">
-          <div className="text-[18px] mt-3 font-semibold">{nameProduct}</div>
-          <div className="text-md ">Price: {priceProduct} THB</div>
+          <div className="text-[18px] mt-3 font-semibold">
+            {product.nameProduct}
+          </div>
+          <div className="text-md ">Price: {product.priceProduct} THB</div>
         </div>
         {user?.role === "admin" ? (
           <div className="  ml-5">
@@ -26,7 +26,13 @@ function CardTitle({ product: { nameProduct, priceProduct, id } }) {
             >
               Edit
             </Button>
-            <Moda open={open} close={() => setOpen(false)} id={id} />
+
+            <Mymodal
+              open={open}
+              close={() => setOpen(false)}
+              id={product.id}
+              prod={product}
+            />
           </div>
         ) : (
           false

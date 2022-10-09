@@ -39,6 +39,7 @@ function Rounter() {
             <>
               <Route path="admin/course" element={<AdminCategory />} />
               <Route path="admin/portfolio" element={<AdminPortfolio />} />
+
               <Route
                 path="admin/createcategory"
                 element={<CreateCategoryPage />}

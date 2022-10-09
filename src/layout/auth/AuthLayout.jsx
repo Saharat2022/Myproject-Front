@@ -8,11 +8,10 @@ function AuthLayout() {
     <>
       <div className="relative border-red-600 border-2">
         <Header />
+
         <Outlet />
       </div>
-      <div>
-        <Footers />
-      </div>
+      <Footers />
     </>
   );
 }

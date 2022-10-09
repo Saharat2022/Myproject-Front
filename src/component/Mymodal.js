@@ -6,51 +6,51 @@ import { toast } from "react-toastify";
 import * as adminService from "../api/adminApi";
 import { useAdmin } from "../contexts/AdminContext";
 
-function Moda({ open, close, id }) {
-  const { getidEdit } = useAdmin();
-  const [oneEdit, setOneEdit] = useState();
+function Mymodal({ open, close, id, prod }) {
+  // const [oneEdit, setOneEdit] = useState();
+  // console.log("prod :>> ", prod);
   useEffect(() => {
     const idEdit = async () => {
       try {
-        const res = await getidEdit(id);
-        setOneEdit(res.data.Itemedit);
+        const res = await adminService.getOneIdEdit(id);
+        // console.log(res.data.Itemedit);
+        // setOneEdit(res.data.Itemedit);
         const { Itemedit } = res.data;
 
-        setInput({
-          nameProduct: Itemedit.nameProduct,
-          descriptionCourse: Itemedit.descriptionCourse,
-          priceProduct: Itemedit.priceProduct,
-          descriptionLast: Itemedit.descriptionLast,
-          type: Itemedit.type,
-          inventory: Itemedit.inventory,
-          subject: Itemedit.subjectcourse.subject,
-          img: Itemedit.courseImg,
-        });
-        console.log(Itemedit.courseImg);
-
-        setFile({ courseImg: URL.createObjectURL(Itemedit.courseImg) });
+        // setInput({
+        //   nameProduct: Itemedit.nameProduct,
+        //   descriptionCourse: Itemedit.descriptionCourse,
+        //   priceProduct: Itemedit.priceProduct,
+        //   descriptionLast: Itemedit.descriptionLast,
+        //   type: Itemedit.type,
+        //   inventory: Itemedit.inventory,
+        //   subject: Itemedit.subjectcourse.subject,
+        //   image: Itemedit.courseImg,
+        // });
       } catch (err) {
         toast.error(err.response?.data.message);
       }
     };
-    idEdit();
-  }, []);
 
-  const [file, setFile] = useState(null);
+    idEdit();
+  }, [id]);
+
+  const [file, setFile] = useState(prod.courseImg);
   const [file2, setFile2] = useState(null);
   const inputEl = useRef();
   const inputEl2 = useRef();
   const navigate = useNavigate();
   const { startLoading, stopLoading } = useLoading();
-  const { setNewProduct, allcategory } = useAdmin();
+  const { setAllProduct, allcategory, getProduct } = useAdmin();
   const [input, setInput] = useState({
-    nameProduct: "",
-    descriptionCourse: "",
-    priceProduct: 0,
-    descriptionLast: "",
-    type: "offline",
-    inventory: 0,
-    subject: "Math",
+    nameProduct: prod.nameProduct,
+    descriptionCourse: prod.descriptionCourse,
+    priceProduct: prod.priceProduct,
+    descriptionLast: prod.descriptionLast,
+    type: prod.type,
+    inventory: prod.inventory,
+    subject: prod.subjectcourse.subject,
+    image: prod.courseImg,
   });
 
   const handleChangeInput = (e) => {
@@ -63,23 +63,7 @@ function Moda({ open, close, id }) {
     try {
       startLoading();
 
-      // await register(input);
       const formData = new FormData();
-      if (!input.nameProduct) {
-        return toast.error("Coursr name is require");
-      }
-      if (!input.descriptionCourse) {
-        return toast.error("Deatail Course is require");
-      }
-      if (!input.priceProduct) {
-        return toast.error("Price is require");
-      }
-      if (!file) {
-        return toast.error("Picture product is require");
-      }
-      if (input.type === "online") {
-        return input.inventory === 0 ? toast.error("Please input stock") : "";
-      }
 
       formData.append("nameProduct", input.nameProduct);
       formData.append("descriptionCourse", input.descriptionCourse);
@@ -90,23 +74,25 @@ function Moda({ open, close, id }) {
       formData.append("type", input.type);
       formData.append("inventory", input.inventory);
       formData.append("subject", input.subject);
-      console.log(formData);
-      const res = await adminService.createProduct(formData);
-      setNewProduct(res.data.item);
-      toast.success("create success");
-      setInput({
-        nameProduct: "",
-        descriptionCourse: "",
-        priceProduct: 0,
-        descriptionLast: "",
-        type: "offline",
-        inventory: 0,
-        subject: "Math",
-      });
-      setFile(null);
-      setFile2(null);
 
-      toast.success("success create");
+      const res = await adminService.updateCourse(id, formData);
+      setAllProduct(res.data.courseUpdate);
+
+      close();
+      getProduct();
+      toast.success("Edit success");
+      // setInput({
+      //   nameProduct: "",
+      //   descriptionCourse: "",
+      //   priceProduct: 0,
+      //   descriptionLast: "",
+      //   type: "offline",
+      //   inventory: 0,
+      //   subject: "Math",
+      // });
+      // setFile(null);
+      // setFile2(null);
+
       navigate("/admin/course");
     } catch (err) {
       // res ถ้าเออเร่อ มันจะส่งเป็น err กลับมา
@@ -119,6 +105,7 @@ function Moda({ open, close, id }) {
   if (!open) {
     return null;
   }
+
   return (
     <div
       onClick={close}
@@ -139,6 +126,7 @@ function Moda({ open, close, id }) {
             <span className="mt-10 text-xl font-bold mx-auto">
               Create Category
             </span>
+            {/* <form onSubmit={handleSubmitForms}> */}
             <form onSubmit={handleSubmitForms}>
               <div className="flex justify-center ">
                 <div
@@ -161,7 +149,12 @@ function Moda({ open, close, id }) {
                   {file ? (
                     <img
                       className="w-full h-full"
-                      src={URL.createObjectURL(file)}
+                      // src={URL.createObjectURL(file)}
+                      src={
+                        typeof file === "string"
+                          ? file
+                          : URL.createObjectURL(file)
+                      }
                       alt="profile"
                       sizes="xs"
                     />
@@ -169,7 +162,7 @@ function Moda({ open, close, id }) {
                     <>
                       <img
                         src={
-                          input.img ||
+                          input?.image ||
                           "https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-PNG-Photos.png"
                         }
                         className="rounded-full shadow-sm w-12 h-12"
@@ -191,7 +184,6 @@ function Moda({ open, close, id }) {
                       type="text"
                       placeholder="Your Course name"
                       name="nameProduct"
-                      required={true}
                       className="text-xs"
                       value={input.nameProduct}
                       onChange={handleChangeInput}
@@ -212,7 +204,6 @@ function Moda({ open, close, id }) {
                       type="text"
                       name="descriptionCourse"
                       placeholder="Your Deatail Course"
-                      required={true}
                       value={input.descriptionCourse}
                       onChange={handleChangeInput}
                     />
@@ -228,7 +219,6 @@ function Moda({ open, close, id }) {
                       type="text"
                       name="priceProduct"
                       placeholder="Your Price"
-                      required={true}
                       value={input.priceProduct}
                       onChange={handleChangeInput}
                     />
@@ -292,7 +282,6 @@ function Moda({ open, close, id }) {
                     <Select
                       id="type"
                       name="type"
-                      required={true}
                       value={input.type}
                       onChange={handleChangeInput}
                     >
@@ -313,7 +302,6 @@ function Moda({ open, close, id }) {
                         type="text"
                         name="inventory"
                         placeholder="Your Stock"
-                        required={true}
                         value={input.inventory}
                         onChange={handleChangeInput}
                       />
@@ -376,4 +364,4 @@ function Moda({ open, close, id }) {
   );
 }
 
-export default Moda;
+export default Mymodal;

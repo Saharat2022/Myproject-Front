@@ -28,6 +28,8 @@ function TabLogin() {
               <span className=" mr-8 hover:text-orange-400 ">
                 <Link to="/stepapply">วิธีสมัครเรียน</Link>
               </span>
+              <span>ตะกร้าสินค้า</span>
+              <span className="rounded-lg border-red-600 border">10</span>
               <Navbar fluid={true} rounded={true}>
                 <div
                   className="flex md:order-2 hover:border-2 hover:rounded-lg hover: border-white border-2 hover:border-red-600"

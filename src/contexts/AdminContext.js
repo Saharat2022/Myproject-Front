@@ -62,10 +62,6 @@ function AdminContextProvider({ children }) {
     setAllProduct(cloneProduct);
   };
 
-  const getidEdit = async (id) => {
-    return await adminService.getOneIdEdit(id);
-  };
-
   if (initialLoading) return <Spinner />;
 
   return (
@@ -75,7 +71,8 @@ function AdminContextProvider({ children }) {
         setNewProduct,
         deleteProduct,
         allcategory,
-        getidEdit,
+        setAllProduct,
+        getProduct,
       }}
     >
       {children}

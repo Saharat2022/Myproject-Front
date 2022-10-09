@@ -9,4 +9,7 @@ export const deleteItem = (id) => axios.delete("/admin/deleteItem/" + id);
 
 export const getcategory = () => axios.get("/admin/allcategory");
 
-export const getOneIdEdit = (id) => axios.get("/admin/edit/" + id);
+export const getOneIdEdit = (id) => axios.get(`/admin/edit/${id}`);
+
+export const updateCourse = (id, input) =>
+  axios.patch("/admin/updateproduct/" + id, input);

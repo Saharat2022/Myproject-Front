@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/AuthContext";
 function CardHeader({ product: { courseImg, id } }) {
   const { user } = useAuth();
   const { deleteProduct } = useAdmin();
-
+  console.log(courseImg, id);
   return (
     <>
       {user?.role === "admin" ? (
