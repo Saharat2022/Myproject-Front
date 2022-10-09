@@ -10,7 +10,11 @@ function FirstPage() {
         <div className="h-56 sm:h-64 xl:h-80 2xl:h-96  shadow-2xl">
           <Carousel>
             <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-              Slide 1
+              <img
+                src="public/image/Carousel/stat.png"
+                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                alt="..."
+              />
             </div>
             <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
               Slide 2

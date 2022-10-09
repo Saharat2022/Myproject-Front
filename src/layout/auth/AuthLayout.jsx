@@ -6,7 +6,7 @@ import Footers from "../Footer/Footers";
 function AuthLayout() {
   return (
     <>
-      <div className="relative border-red-600 border-2">
+      <div className="relative border-red-600 border-2 min-h-screen">
         <Header />
 
         <Outlet />

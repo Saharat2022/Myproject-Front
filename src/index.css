@@ -7,3 +7,5 @@
     @apply flex items-center bg-none border-[1px] border-solid bg-red-400 h-[36px] py-0 px-6 text-red-600 float-left hover:bg-red-600 hover:text-white;
   }
 }
+
+@import "react-slideshow-image/dist/styles.css";

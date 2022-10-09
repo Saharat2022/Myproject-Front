@@ -2,7 +2,7 @@ import React from "react";
 
 function Footers() {
   return (
-    <div className="sticky bottom-0 left-0 bg-white z-50 border-red-600 border-2">
+    <div className="bg-white z-50 border-red-600 border-2 w-max-screen">
       <div className="bg-neutral-600 ">
         <div className="w-9/12 mx-auto border-red-600 border-2 flex justify-between items-start gap-14">
           <div className="border-orange-300 border-2 w-4/12">

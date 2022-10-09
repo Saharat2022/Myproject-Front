@@ -10,6 +10,7 @@ function AdminContextProvider({ children }) {
   const [allProduct, setAllProduct] = useState([]);
   const [allcategory, setAllCategory] = useState([]);
   const [initialLoading, setInitialLoading] = useState(true);
+  const [searchProduct, setSearchProduct] = useState("");
   //   console.log(allProduct);
   //ทุกครั้งที่รีเฟชรหน้า
   useEffect(() => {
@@ -64,6 +65,10 @@ function AdminContextProvider({ children }) {
 
   if (initialLoading) return <Spinner />;
 
+  const search = (input) => {
+    setSearchProduct(input);
+  };
+
   return (
     <AdminContext.Provider
       value={{
@@ -73,6 +78,8 @@ function AdminContextProvider({ children }) {
         allcategory,
         setAllProduct,
         getProduct,
+        searchProduct,
+        search,
       }}
     >
       {children}

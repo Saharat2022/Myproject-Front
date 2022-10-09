@@ -1,5 +1,5 @@
 import { Button, Label, Select, TextInput } from "flowbite-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoading } from "../contexts/LoadingContext";
 import { toast } from "react-toastify";
@@ -9,31 +9,31 @@ import { useAdmin } from "../contexts/AdminContext";
 function Mymodal({ open, close, id, prod }) {
   // const [oneEdit, setOneEdit] = useState();
   // console.log("prod :>> ", prod);
-  useEffect(() => {
-    const idEdit = async () => {
-      try {
-        const res = await adminService.getOneIdEdit(id);
-        // console.log(res.data.Itemedit);
-        // setOneEdit(res.data.Itemedit);
-        const { Itemedit } = res.data;
+  // useEffect(() => {
+  //   const idEdit = async () => {
+  //     try {
+  //       const res = await adminService.getOneIdEdit(id);
+  //       // console.log(res.data.Itemedit);
+  //       // setOneEdit(res.data.Itemedit);
+  //       const { Itemedit } = res.data;
 
-        // setInput({
-        //   nameProduct: Itemedit.nameProduct,
-        //   descriptionCourse: Itemedit.descriptionCourse,
-        //   priceProduct: Itemedit.priceProduct,
-        //   descriptionLast: Itemedit.descriptionLast,
-        //   type: Itemedit.type,
-        //   inventory: Itemedit.inventory,
-        //   subject: Itemedit.subjectcourse.subject,
-        //   image: Itemedit.courseImg,
-        // });
-      } catch (err) {
-        toast.error(err.response?.data.message);
-      }
-    };
+  //       // setInput({
+  //       //   nameProduct: Itemedit.nameProduct,
+  //       //   descriptionCourse: Itemedit.descriptionCourse,
+  //       //   priceProduct: Itemedit.priceProduct,
+  //       //   descriptionLast: Itemedit.descriptionLast,
+  //       //   type: Itemedit.type,
+  //       //   inventory: Itemedit.inventory,
+  //       //   subject: Itemedit.subjectcourse.subject,
+  //       //   image: Itemedit.courseImg,
+  //       // });
+  //     } catch (err) {
+  //       toast.error(err.response?.data.message);
+  //     }
+  //   };
 
-    idEdit();
-  }, [id]);
+  //   idEdit();
+  // }, [id]);
 
   const [file, setFile] = useState(prod.courseImg);
   const [file2, setFile2] = useState(null);
@@ -109,23 +109,21 @@ function Mymodal({ open, close, id, prod }) {
   return (
     <div
       onClick={close}
-      className="bg-opacity-70 bg-slate-500 fixed top-0 rounded mb-[100px] left-0 right-0 bottom-0 flex justify-center items-center z-50"
+      className="bg-opacity-70 bg-slate-500 fixed top-0 rounded mb-[100px] left-0 right-0 bottom-0 flex justify-center items-center z-50 h-full"
     >
       <div
-        className="relative w-[700px] h-[400px] bg-white rounded overflow-auto border-red-600 border-2 flex"
+        className="relative w-[700px] h-[400px] bg-gray-300 rounded overflow-auto border-red-600 border-2 flex"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="text-xl flex justify-center absolute border-red-400 border right-0 top-0 mr-2">
+        <div className="text-xl flex justify-center absolute border-red-600 border right-0 top-5 mr-2 rounded w-10 z-40">
           <button type="button" onClick={close}>
             X
           </button>
         </div>
 
-        <div className="justify-center flex h-full bg-gray-300 ">
-          <div className="border-black border-2 flex mb-50 flex-col items-center  w-3/4  rounded-lg mt-20 shadow-lg">
-            <span className="mt-10 text-xl font-bold mx-auto">
-              Create Category
-            </span>
+        <div className="justify-center flex h-full  ">
+          <div className="flex mb-50 flex-col items-center  w-3/4   rounded-lg mt-20 ">
+            <span className="mt-10 text-xl font-bold mx-auto">EDIT FORM</span>
             {/* <form onSubmit={handleSubmitForms}> */}
             <form onSubmit={handleSubmitForms}>
               <div className="flex justify-center ">

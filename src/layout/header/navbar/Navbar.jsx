@@ -21,7 +21,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="hover:text-orange-400">
-              <Link to="/course" target="" rel="noopener noreferrer">
+              <Link to={`/course`} target="" rel="noopener noreferrer">
                 คอร์สเรียน
               </Link>
             </li>
@@ -55,7 +55,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="hover:text-orange-400">
-              <Link to="/admin/course" target="" rel="noopener noreferrer">
+              <Link to="/course" target="" rel="noopener noreferrer">
                 คอร์สเรียน
               </Link>
             </li>

@@ -1,7 +1,12 @@
 import React from "react";
+import AdminCategory from "./AdminCategory";
 
 function CoursePage() {
-  return <div>Course</div>;
+  return (
+    <>
+      <AdminCategory />
+    </>
+  );
 }
 
 export default CoursePage;

@@ -1,15 +1,18 @@
 import { Button } from "flowbite-react";
 import React from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-function CardFooter({ product: { nameProduct, priceProduct } }) {
+function CardFooter({ product: { nameProduct, priceProduct, id } }) {
   const { user } = useAuth();
   return (
     <>
       <div className="flex justify-between mx-2">
-        <Button gradientMonochrome="info" size="xs">
-          Details
-        </Button>
+        <Link to={`/course/${id}`}>
+          <Button gradientMonochrome="info" size="xs">
+            Details
+          </Button>
+        </Link>
 
         {user?.role === "user" ? (
           <Button gradientDuoTone="pinkToOrange" size="xs">

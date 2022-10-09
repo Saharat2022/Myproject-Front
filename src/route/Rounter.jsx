@@ -17,6 +17,7 @@ import PortFolio from "../pages/PortFolio";
 import RegisterPage from "../pages/RegisterPage";
 import StepApply from "../pages/StepApply";
 import CreateCategoryPage from "../pages/CreateCategoryPage";
+import DetailCourse from "../pages/DetailCourse";
 
 function Rounter() {
   const { user } = useAuth();
@@ -26,9 +27,11 @@ function Rounter() {
         <Route path="" element={<FirstPage />} />
         <Route path="our" element={<OurPage />} />
         <Route path="course" element={<CoursePage />} />
+
         <Route path="portfolio" element={<PortFolio />} />
         <Route path="contact" element={<Contact />} />
         <Route path="stepapply" element={<StepApply />} />
+        <Route path="/course/:id" element={<DetailCourse />} />
         {user ? (
           user.role === "user" ? (
             <>
