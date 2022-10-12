@@ -7,10 +7,10 @@ import CardTitle from "../CardTitle";
 
 function Cards() {
   const { allProduct, searchProduct } = useAdmin();
-  console.log(allProduct);
+
   return (
     <>
-      <div className="mt-2 flex justify-start flex-wrap border-pink-600 border-3">
+      <div className="mt-2 flex justify-between flex-wrap p-4">
         {allProduct
           .filter((item) =>
             item.nameProduct.includes(searchProduct.toLowerCase())
@@ -19,7 +19,7 @@ function Cards() {
             return (
               <div
                 key={item.id}
-                className="border w-max h-max p-5 m-3 flex flex-col relative border-red-500"
+                className="w-max h-max p-5 m-3 flex flex-col relative border-red-600 border-4 rounded-md"
               >
                 <CardHeader product={item} />
                 <CardTitle product={item} />

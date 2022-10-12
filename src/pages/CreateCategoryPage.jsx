@@ -89,7 +89,7 @@ function CreateCategoryPage() {
 
   return (
     <div className="justify-center flex h-full bg-gray-300 ">
-      <div className="border-black border-2 flex mb-50 flex-col items-center  w-3/4  rounded-lg mt-20 shadow-lg">
+      <div className="border-black border-2 flex mb-50 flex-col items-center  w-3/4  rounded-lg mt-20 shadow-lg mb-20">
         <span className="mt-10 text-xl font-bold mx-auto">Create Category</span>
         <form onSubmit={handleSubmitForms}>
           <div className="flex justify-center ">
@@ -127,7 +127,7 @@ function CreateCategoryPage() {
                 </>
               )}
 
-              <span>upload picture</span>
+              <span className="text-xm font-medium">Upload picture</span>
             </div>
           </div>
           <div className=" w-[500px] mx-auto">
@@ -198,7 +198,7 @@ function CreateCategoryPage() {
 
             <div className="flex flex-col items-start m-4  gap-3">
               <div className="mb-2 block w-1/4">
-                <Label htmlFor="courseLink" value="Link OR Video :" />
+                <Label htmlFor="courseLink" value="Video :" />
               </div>
               <div className="w-full">
                 <input

@@ -8,7 +8,7 @@ function ProfileContainer() {
   const inputEl = useRef();
   return (
     <div className="justify-center flex h-full bg-gray-300 ">
-      <div className="border-black border-2 flex mb-50 flex-col items-center  w-[50vw] rounded-lg mt-20 shadow-lg">
+      <div className="border-black border-2 flex mb-56 flex-col items-center  w-[50vw] rounded-lg mt-20 shadow-lg">
         <span className="mt-10 text-xl font-bold mx-auto">EditForm</span>
         <div
           className=" p-7  flex flex-col justify-center mt-10 items-center border-r bg-indigo-200  border-4 rounded-l-lg cursor-pointer"

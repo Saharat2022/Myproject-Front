@@ -18,7 +18,7 @@ function TabLogin() {
   //   document.addEventListener("mousedown", handleClickOutside);
   // }, []);
   // console.log(user.role === "user");
-  console.log(user);
+
   return (
     <>
       <div className=" px-4 my-auto text-sm ">
@@ -26,22 +26,21 @@ function TabLogin() {
           user.role === "user" ? (
             <div className="flex items-center ">
               <span className=" mr-8 hover:text-orange-400 ">
-                <Link to="/stepapply">วิธีสมัครเรียน</Link>
+                <Link to="/">วิธีสมัครเรียน</Link>
               </span>
 
-              <Navbar fluid={true} rounded={true}>
+              <Navbar className="bg-red-400">
                 <div
-                  className="flex md:order-2 hover:border-2 hover:rounded-lg hover: border-white border-2 hover:border-red-600"
+                  className="-m-5 flex md:order-2  hover:border-2 hover:rounded-lg  hover:border-red-600 "
                   // ref={dropdownEl}
                 >
+                  <i className="fa-solid fa-cart-shopping"></i>
                   <Dropdown
                     arrowIcon={false}
                     inline={true}
                     label={
                       <Avatan
-                        src={
-                          user.profileImage === "null" ? "" : user.profileImage
-                        }
+                        src={user.profileImage ? user.profileImage : ""}
                       />
                     }
                     // onClick={() => setIsopen((pre) => !pre)}
@@ -53,10 +52,9 @@ function TabLogin() {
                       </span>
                     </Dropdown.Header>
                     <Link to="user/editprofile">
-                      <Dropdown.Item>Editprofile</Dropdown.Item>
+                      <Dropdown.Item>EditProfile</Dropdown.Item>
                     </Link>
-                    <Dropdown.Item>Settings</Dropdown.Item>
-                    <Dropdown.Item>Earnings</Dropdown.Item>
+
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
                   </Dropdown>
@@ -67,7 +65,7 @@ function TabLogin() {
           ) : (
             <>
               <span className=" mr-8 hover:text-orange-400">
-                <Link to="/stepapply">วิธีสมัครเรียน</Link>
+                <Link to="/">วิธีสมัครเรียน</Link>
               </span>
               <Link to="/">
                 <span className="border-red-600 border-2 rounded-md px-4 py-1.5 shadow-md shadow-[#da4f4f] ">
@@ -79,7 +77,7 @@ function TabLogin() {
         ) : (
           <>
             <span className=" mr-8 hover:text-orange-400">
-              <Link to="/stepapply">วิธีสมัครเรียน</Link>
+              <Link to="/">วิธีสมัครเรียน</Link>
             </span>
 
             <span className="border-red-600 border-2 rounded-md px-4 py-1.5 shadow-md shadow-[#da4f4f] ">

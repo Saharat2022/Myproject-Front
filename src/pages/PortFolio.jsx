@@ -1,7 +1,8 @@
 import React from "react";
 
-function PortFolio() {
-  return <div>Lorem1000</div>;
-}
+import AdminPortfolio from "./AdminPortfolio";
 
+function PortFolio() {
+  return <AdminPortfolio />;
+}
 export default PortFolio;
